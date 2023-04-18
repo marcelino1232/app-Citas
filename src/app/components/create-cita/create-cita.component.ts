@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-create-cita',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CreateCitaComponent {
 
+  @Output()  nuevaCita = new EventEmitter<any>();
 
   nombre = '';
   fecha = '';
@@ -31,6 +32,8 @@ export class CreateCitaComponent {
       hora:this.hora,
       sintomas:this.sintomas
     }
+
+    this.nuevaCita.emit(cita);
     
     this.resetCampos();
   }
